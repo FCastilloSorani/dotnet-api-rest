@@ -1,6 +1,12 @@
+using Api.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCorsPolicy();
+
 var app = builder.Build();
+
+app.UseCors(CorsServiceExtension.CorsPolicy);
 
 if (!app.Environment.IsDevelopment())
 {
