@@ -2,8 +2,8 @@ namespace Api.Services;
 
 public class MessageService : IMessageService
 {
-    public string GetWelcomeMessage()
+    public string GetWelcomeMessage(string username)
     {
-        return "Hello world from a .NET API!";
+        return $"Hello {username}! This is a .NET API!";
     }
 }

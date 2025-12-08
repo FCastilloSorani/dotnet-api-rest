@@ -8,8 +8,8 @@ namespace Api.Controllers;
 public class AppController(IMessageService messageService) : ControllerBase
 {
     [HttpGet]
-    public ActionResult<string> HelloWorld()
+    public ActionResult<string> HelloWorld([FromQuery] string username)
     {
-        return messageService.GetWelcomeMessage();
+        return messageService.GetWelcomeMessage(username);
     }
 }
