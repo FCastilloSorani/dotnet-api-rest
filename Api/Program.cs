@@ -6,8 +6,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddCorsPolicy();
 
-builder.Services.AddSingleton<IMessageService, MessageService>();
-
 var app = builder.Build();
 
 app.UseCors(CorsServiceExtension.CorsPolicy);
