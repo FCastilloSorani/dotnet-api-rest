@@ -15,7 +15,7 @@ public class UsersController(ILogger<UsersController> logger, IUsersService user
     {
         var users = await usersService.GetAll();
 
-        if (!users.ToList().Any())
+        if (users.Count == 0)
         {
             return NotFound("No users found");
         }
