@@ -40,7 +40,7 @@ public class UsersService(ILogger<UsersService> logger) : IUsersService
                 throw new UserAlreadyExistsException($"User with username '{createUserDto.Username}' already exists.");
             }
 
-            User user = new User
+            var user = new User
             {
                 Id = Guid.CreateVersion7(),
                 Username = createUserDto.Username,
@@ -65,16 +65,16 @@ public class UsersService(ILogger<UsersService> logger) : IUsersService
     {
         try
         {
-            User found = await GetById(id);
+            var found = await GetById(id);
 
-            User updated = found with
+            var updated = found with
             {
                 Username = updateUserDto.Username ?? found.Username,
                 FirstName = updateUserDto.FirstName ?? found.FirstName,
                 LastName = updateUserDto.LastName ?? found.LastName
             };
 
-            int index = _users.FindIndex(x => x.Id.Equals(found.Id));
+            var index = _users.FindIndex(x => x.Id.Equals(found.Id));
 
             _users[index] = updated;
 
@@ -91,7 +91,7 @@ public class UsersService(ILogger<UsersService> logger) : IUsersService
     {
         try
         {
-            User found = await GetById(id);
+            var found = await GetById(id);
 
             _users.Remove(found);
         }
