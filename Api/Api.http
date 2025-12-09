@@ -1,8 +1,38 @@
 @Api_HostAddress = http://localhost:5221
 
-@Username = Fernando
+### Users
+@UsersHostAddress = {{Api_HostAddress}}/users
 
-GET {{Api_HostAddress}}/?username={{Username}}
-Accept: text/plain
+### Users: Create 
+POST {{UsersHostAddress}}
+Content-Type: application/json
+Accept: application/json
 
-###
+{
+  "username": "FCastilloSorani",
+  "firstName": "Fernando",
+  "lastName": "Castillo Sorani"
+}
+
+> {%
+    const {id} = response.body;
+    client.global.set("CreatedUserId", id);
+%}
+
+### Users: GetById
+GET {{UsersHostAddress}}/{{CreatedUserId}}
+Accept: application/json
+
+### Users: Update 
+PUT {{UsersHostAddress}}/{{CreatedUserId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "SomeUser",
+  "firstName": "SomeFirstName",
+  "lastName": "SomeLastName"
+}
+
+### Users: Delete
+DELETE {{UsersHostAddress}}/{{CreatedUserId}}
