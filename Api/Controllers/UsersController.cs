@@ -75,7 +75,6 @@ public class UsersController(ILogger<UsersController> logger, IUsersService user
         }
     }
 
-
     [HttpPut("{id:guid}")]
     public async Task<ActionResult<User>> Update([FromRoute] Guid id, [FromBody] UpdateUserDto updateUserDto)
     {
